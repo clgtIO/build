@@ -5,7 +5,7 @@
     image: 'alpine/k8s:1.18.2',
     environment: {
         KUBECONFIG: {
-            from_secret: kubeconfig
+            from_secret: 'kubeconfig'
         }
     },
     commands: [
