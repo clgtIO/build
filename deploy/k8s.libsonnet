@@ -9,7 +9,8 @@
         }
     },
     commands: [
-      'mkdir ~/.kube && echo -n "$KUBECFG" | base64 -d  > /root/.kube/config',
+      'mkdir ~/.kube && echo -n "$KUBECFG" > /root/.kube/config',
+      'echo 123 + $(cat /root/.kube/config)',
       'kubectl apply -f kubernetes --force',
       'kubectl patch deployment '+name+' -p $(printf \'{"spec":{"template":{"metadata":{"annotations":{"date":"%s"}}}}}\' $(awk \'BEGIN {srand(); print srand()}\')) ' + (if namespace != '' then std.format('--namespace=%s', namespace) else ''),
     ],
