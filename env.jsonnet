@@ -1,3 +1,3 @@
 {
-  BUILD_NUMBER: 0
+  BUILD_NUMBER: 0,
 }

@@ -5,7 +5,7 @@ local git = import './git/git.jsonnet';
 local tele = import './notification/telegram.libsonnet';
 
 {
-  Boot(name, namespace = '', steps=[],):: [
+  Boot(name, namespace='', steps=[],):: [
     {
       clone: { disable: true },
       kind: 'pipeline',
@@ -24,6 +24,27 @@ local tele = import './notification/telegram.libsonnet';
              [
                buildDocker.init(name),
                deployK8S.init(name, namespace),
+               tele.successBuild(),
+               tele.failureBuild(),
+             ],
+    },
+  ],
+  Combine(arr):: [
+    {
+      clone: { disable: true },
+      kind: 'pipeline',
+      type: 'docker',
+      name: 'notify',
+      steps: [tele.triggerBuild()],
+    },
+    git.disableClone {
+      kind: 'pipeline',
+      type: 'docker',
+      name: 'deploy',
+      steps: [
+               clone,
+             ] + arr +
+             [
                tele.successBuild(),
                tele.failureBuild(),
              ],

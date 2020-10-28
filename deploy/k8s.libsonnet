@@ -1,6 +1,5 @@
 {
-  init(name, namespace, host='hub.infra.clgt.io'):: {
-    local fullAddressRepo = std.format('%s/ci/%s', [host, name]),
+  init(name, namespace):: {
     name: 'deploy_k8s',
     image: 'alpine/k8s:1.18.2',
     environment: {

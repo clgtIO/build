@@ -1,3 +1,3 @@
 {
-  disableClone: import './static/disable_clone.jsonnet'
+  disableClone: import './static/disable_clone.jsonnet',
 }
