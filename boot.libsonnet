@@ -5,7 +5,7 @@ local git = import './git/git.jsonnet';
 local tele = import './notification/telegram.libsonnet';
 
 {
-  Boot(name, namespace='', steps=[],):: [
+  Boot(name, namespace='', steps=[], hub='hub.infra.clgt.io'):: [
     {
       clone: { disable: true },
       kind: 'pipeline',
@@ -22,7 +22,7 @@ local tele = import './notification/telegram.libsonnet';
              ] +
              steps +
              [
-               buildDocker.init(name),
+               buildDocker.init(name, host=hub),
                deployK8S.init(name, namespace),
                tele.successBuild(),
                tele.failureBuild(),
