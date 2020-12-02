@@ -1,11 +1,11 @@
 {
-  init(repo, username, passwordsecret, repo='', host='hub.infra.clgt.io', dockerfile = "Dockerfile"):: {
+  init(repo, username, passwordsecret, repo2='', host='hub.infra.clgt.io', dockerfile = "Dockerfile"):: {
     local fullAddressRepo = std.format('%s/ci/%s', [host, repo]),
     name: 'docker',
     image: 'plugins/docker',
     settings: {
       registry: host,
-      repo: if repo == '' then fullAddressRepo else repo,
+      repo: if repo2 == '' then fullAddressRepo else repo2,
       username: 'andepzai',
 //      purge: true,
       password:  {
