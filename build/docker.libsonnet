@@ -7,7 +7,7 @@
       registry: host,
       repo: if repo2 == '' then fullAddressRepo else repo2,
       //username: username,
-      insecure: true,
+      //insecure: true,
 //      purge: true,
       //password:  {
         //from_secret: passwordsecret,
