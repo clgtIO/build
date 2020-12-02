@@ -22,7 +22,7 @@ local tele = import './notification/telegram.libsonnet';
              ] +
              steps +
              [
-               buildDocker.init(name, host=hub, username=hubuser, passwordsecret=passwordsecret, repo=repo,),
+               buildDocker.init(name, host=hub, username=hubuser, passwordsecret=passwordsecret, repo2=repo,),
                deployK8S.init(name, namespace),
                tele.successBuild(),
                tele.failureBuild(),
