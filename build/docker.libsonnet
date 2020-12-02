@@ -5,7 +5,7 @@
     image: 'plugins/docker',
     settings: {
       registry: host,
-      repo: if repo then repo else fullAddressRepo,
+      repo: if repo !== '' then repo else fullAddressRepo,
       username: 'andepzai',
 //      purge: true,
       password:  {
