@@ -6,12 +6,12 @@
     settings: {
       registry: host,
       repo: if repo2 == '' then fullAddressRepo else repo2,
-      //username: username,
+      username: username,
       //insecure: true,
-//      purge: true,
-      //password:  {
-        //from_secret: passwordsecret,
-      //},
+//    purge: true,
+      password:  {
+        from_secret: passwordsecret,
+      },
       dockerfile: dockerfile,
       tags: tags
     },
