@@ -1,5 +1,5 @@
 {
-  init(repo, username, passwordsecret, repo2='', host='hub.infra.clgt.io', dockerfile = "Dockerfile"):: {
+  init(repo, username, passwordsecret, repo2='', host='hub.infra.clgt.io', dockerfile = "Dockerfile", tags = 'latest'):: {
     local fullAddressRepo = std.format('%s/ci/%s', [host, repo]),
     name: 'docker',
     image: 'plugins/docker',
@@ -13,7 +13,7 @@
         //from_secret: passwordsecret,
       //},
       dockerfile: dockerfile,
-      tags: 'latest'
+      tags: tags
     },
   },
 }
