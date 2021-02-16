@@ -11,6 +11,7 @@
       'mkdir ~/.kube && echo -n "$KUBECFG" > /root/.kube/config',
       'kubectl apply -f kubernetes --force',
       'kubectl patch deployment '+name+' -p $(printf \'{"spec":{"template":{"metadata":{"annotations":{"date":"%s"}}}}}\' $(awk \'BEGIN {srand(); print srand()}\')) ' + (if namespace != '' then std.format('--namespace=%s', namespace) else ''),
+      'kubectl rollout status deployment/'+name+' --timeout=60s -n '+namespace,
     ],
   },
 }
