@@ -4,7 +4,7 @@
     name: 'docker',
     image: 'plugins/docker',
     environment: {
-      DOCKER_API_VERSION: '1.39'
+      DOCKER_API_VERSION: '1.38'
     },
     settings: {
       registry: host,
