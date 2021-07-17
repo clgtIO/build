@@ -3,6 +3,9 @@
     local fullAddressRepo = std.format('%s/ci/%s', [host, repo]),
     name: 'docker',
     image: 'plugins/docker',
+    environment: {
+      DOCKER_API_VERSION: '1.39'
+    },
     settings: {
       registry: host,
       repo: if repo2 == '' then fullAddressRepo else repo2,
